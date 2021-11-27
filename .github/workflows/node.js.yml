@@ -1,13 +1,11 @@
 # This workflow will do a clean install of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: Lint-Unit-Test-Code-Coverage-And-Build
+name: Lint Unit-Test Code-Coverage Build
 
 on:
   push:
-    branches-ignore: [ master ]
-  pull_request:
-    branches-ignore: [ master ]
+    branches-ignore: [ main ]
 
 jobs:
   build:
@@ -26,7 +24,11 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+    # - name: Install Integration Dependencies
     - run: npm ci
+    # - name: Angular Fix And Run Lint
     - run: npm run lint:ci
+    # - name: Unit Test
     - run: npm run test:ci
+    # - name: Build Production
     - run: npm run build:ci
