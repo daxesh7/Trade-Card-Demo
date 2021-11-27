@@ -24,11 +24,11 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - name: Install Integration Dependencies
+    # - name: Install Integration Dependencies
     - run: npm ci
-    - name: Angular Fix And Run Lint
+    # - name: Angular Fix And Run Lint
     - run: npm run lint:ci
-    - name: Unit Test
+    # - name: Unit Test
     - run: npm run test:ci
-    - name: Build Production
+    # - name: Build Production
     - run: npm run build:ci
